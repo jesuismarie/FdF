@@ -60,12 +60,10 @@ void	z_move(int key, t_fdf *map)
 {
 	int		i;
 	int		j;
-	float	a;
 
 	i = 0;
 	j = 0;
 	map->cz = 0;
-	a = 0;
 	if (key == Z_UP)
 		map->cz += 2;
 	if (key == Z_DOWN)
