@@ -64,7 +64,7 @@ int	close_win(t_fdf *map)
 {
 	mlx_clear_window(map->mlx, map->win);
 	mlx_destroy_window(map->mlx, map->win);
-	exit(1);
+	exit(0);
 }
 
 int	main(int ac, char **av)
