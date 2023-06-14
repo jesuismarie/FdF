@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 HEADER = ./includes/fdf.h
 
-MINILIBX = ../minilibx_macos
+MINILIBX = minilibx_macos
 
 LIB = -L minilibx_macos -lmlx
 
@@ -20,17 +20,21 @@ FMS = -framework OpenGL -framework AppKit
 %.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) $(INCS)minilibx_macos -c $< -o $@
 
-all:	${NAME}
+all:	mlx ${NAME}
+
+mlx:
+	make -C $(MINILIBX)
 
 ${NAME}: ${OBJS}
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(FMS) -o ${NAME}
 
 clean:
 	rm -f $(OBJS)
+	make clean -C $(MINILIBX)
 
 fclean: clean
 	rm -f ${NAME}
 
 re: 	fclean all
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean mlx
